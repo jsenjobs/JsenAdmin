@@ -1,0 +1,23 @@
+language: node_js
+node_js:
+- 7.9.0
+script:
+- npm run test
+- npm run packbundle
+before_install:
+- openssl aes-256-cbc -K $encrypted_ca09a88ec016_key -iv $encrypted_ca09a88ec016_iv
+  -in id_rsa.enc -out ~/.ssh/id_rsa -d
+- chmod 600 ~/.ssh/id_rsa
+- echo -e "Host 120.25.217.56\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+after_success:
+- rm -rf cachenote.tar.bz2
+- npm prune --production
+- mv ./product ./node_modules ./package.json ./pm2.json ~/ && rm -rf * && mv ~/product
+  ~/node_modules ~/package.json ~/pm2.json ./ && tar -jcf cache.tar.bz2 *
+- tar -jcf cachenote.tar.bz2 *
+- scp cachenote.tar.bz2 root@120.25.217.56:~/
+- ssh root@120.25.217.56 'rm -rf ~/MicroServer/Note'
+- ssh root@120.25.217.56 'mkdir -p Note && tar -jxf cachenote.tar.bz2 -C Note'
+- ssh root@120.25.217.56 'mv Note ~/MicroServer/'
+- ssh root@120.25.217.56 'cd MicroServer/Note && npm start'
+- rm -rf ~/.ssh
