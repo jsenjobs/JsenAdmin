@@ -1,0 +1,30 @@
+<div class="alert-container" *ngFor="let alert of alerts" [@alertShow]="alert.stat">
+  <alert [type]="alert.type" (onClose)="onClose($event)"><span [innerHtml]="alert.msg"></span></alert>
+</div>
+
+<div class="wrapper">
+
+  <!--  顶部menu  -->
+  <header-menu></header-menu>
+  <!--  ./顶部menu  -->
+
+  <!-- Left side column. contains  the logo and sidebar -->
+  <left-menu #lM></left-menu>
+
+
+  <div class="content-wrapper" style="min-height: 900px;">
+
+    <header-indicator [indicator]="indicator" (ePathChange)="lM.Onchange($event)"></header-indicator>
+    <router-outlet (activate)="onActivate($event)"></router-outlet>
+  </div>
+
+  <!--  footer  -->
+  <pre-footer></pre-footer>
+  <!--  ./footer  -->
+
+
+  <!-- Control Sidebar -->
+  <side-menu></side-menu>
+  <!-- /.Control Sidebar -->
+
+</div>

@@ -1,0 +1,14 @@
+.navbar-custom-menu > .navbar-nav > li > .dropdown-menu {
+  position: absolute;
+  right: 5%;
+  left: auto;
+  border: none !important;
+  background: #fff;
+}
+.navbar-nav > .user-menu > .dropdown-menu {
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+  padding: 0 0 0 0 !important;
+  border-top-width: 0;
+  width: 280px;
+}

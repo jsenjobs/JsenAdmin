@@ -1,0 +1,7 @@
+.sidebar-menu .treeview-menu {
+    display: block !important;
+    overflow: hidden;
+}
+.pull-right-container {
+	background-color: transparent !important;
+}

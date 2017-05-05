@@ -1,0 +1,178 @@
+
+<!-- Main content -->
+<section class="content">
+
+  <dashboard-fileupload-queue [uploader]="uploader" [currentPath]="currentPath"></dashboard-fileupload-queue>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <section class="panel">
+        <header class="panel-heading">
+          <div class="btn-group">
+            <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">文件浏览 <i class="fa fa-angle-down"></i>
+            </button>
+            <ul id="filters" class="dropdown-menu">
+              <li><a class="filter" href="#" data-filter="folder file"> 所有文件</a></li>
+              <li><a class="filter" href="#" data-filter="folder">文件夹</a></li>
+              <li><a class="filter" href="#" data-filter="file">文件</a></li>
+            </ul>
+          </div>
+          <div class="btn-group pull-right">
+            <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">编辑 <i class="fa fa-angle-down"></i>
+            </button>
+            <ul class="dropdown-menu pull-right">
+              <li><a href="#modal-create-folder" data-toggle="modal">
+                <i class="fa fa-folder-open"></i> 创建文件夹
+              </a></li>
+              <li>
+                <a href="javascript:;" class="file">
+                  <i class="fa fa-upload"></i> 上传文件
+                  <input type="file" ng2FileSelect [uploader]="uploader" multiple>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+
+        </header>
+        <div class="panel-body">
+
+          <div id="gallery" class="media-gal">
+
+
+            <div *ngFor="let t_file of files" class="item {{t_file.type.startsWith('folder')?'folder':'file'}}">
+
+
+
+              <div class="portfolio-wrapper">
+
+                <div class="btn-group pull-right">
+                  <a style="" class="toggle-edit" data-toggle="dropdown"><i class="fa fa-toggle-down"></i>
+                  </a>
+                  <ul class="dropdown-menu pull-right">
+                    <li><a href="javascript:void(0);" (click)="showModal(t_file)">
+                      <i class="fa fa-folder-open"></i> 详细信息
+                    </a></li>
+                    <li><a href="#modal-del-file" data-toggle="modal">
+                      <i class="fa fa-folder-open"></i> 删除
+                    </a></li>
+                    <li><a href="#modal-create-folder" data-toggle="modal">
+                      <i class="fa fa-folder-open"></i> 下载
+                    </a></li>
+                  </ul>
+                </div>
+                <span style="margin-left: 4px;margin-top: 2px;">{{t_file.tName}} </span>
+
+                <img src="assets/img/icon/icon-{{t_file.type}}.png" alt="" />
+
+                <div class="label">
+
+                  <div class="label-text">
+
+                    <a class="text-title">{{t_file.tName}} </a>
+
+                    <span class="text-category">{{t_file.tName}} </span>
+
+                  </div>
+
+                  <div class="label-bg"></div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- Modal -->
+          <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                  <h4 class="modal-title">文件信息</h4>
+                </div>
+
+                <div class="modal-body row">
+
+                  <div class="col-md-5 img-modal">
+                    <img src="assets/img/icon/icon-{{selectedItem.type}}.png" alt="">
+
+                    <p class="mtop10"><strong>文件名：</strong> {{selectedItem.tName}}</p>
+                    <p><strong>文件类型：</strong> {{selectedItem.type}}</p>
+                    <p><strong>文件大小：</strong> {{selectedItem.tSize/1024/1024| number:'.2'}} MB</p>
+                    <p><strong>最近修改：</strong> <a href="#">{{selectedItem.tCreateTime}}</a></p>
+                  </div>
+                  <div class="col-md-7">
+                    <div class="form-group">
+                      <label> 文件名</label>
+                      <input id="name" value="{{selectedItem.tName}}" class="form-control">
+                    </div>
+                    <div class="form-group">
+                      <label> 注释</label>
+                      <textarea rows="2" class="form-control">{{selectedItem.tDescribe}}</textarea>
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <!-- modal -->
+
+
+
+
+
+          <!-- Modal create folder start -->
+          <div id="modal-create-folder" class="modal modal-info fade">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title">创建文件夹</h4>
+                </div>
+                <div class="modal-body">
+                  <div class="form-group">
+                    <input id="dir_name" placeholder="文件夹名称" class="form-control" #name>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">取消</button>
+                  <button type="button" class="btn btn-outline" (click)="createDirectory(name)">确认</button>
+                </div>
+              </div>
+              <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+          </div>
+          <!-- modal create folder end -->
+
+
+
+          <!-- Modal del file start -->
+          <div id="modal-del-file" class="modal modal-danger fade">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title">确定删除？</h4>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">取消</button>
+                  <button type="button" class="btn btn-outline">确认</button>
+                </div>
+              </div>
+              <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+          </div>
+          <!-- modal del file end -->
+
+        </div>
+      </section>
+    </div>
+  </div>
+</section>

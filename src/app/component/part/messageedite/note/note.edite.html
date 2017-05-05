@@ -1,0 +1,31 @@
+<section class="content">
+  <div class="row">
+    <div class="col-sm-12">
+      <section class="panel">
+
+        <header class="panel-heading">
+
+          <div class="clearfix">
+            <div class="btn-group">
+              <label>笔记： <input class="form-control medium edit-box edit-box-fit" placeholder="查找" [(ngModel)]="title" aria-controls="editable-sample" type="text"></label>
+            </div>
+            <div class="btn-group pull-right">
+
+              <button class="btn btn-primary" (click)="onSave()">保存</button>
+              <button class="btn btn-warning" (click)="goBack()">取消</button>
+
+            </div>
+          </div>
+
+          <label>笔记描述：</label>
+          <textarea class="form-control medium medium edit-box" rows="2" style="margin-bottom: 6px;" [(ngModel)]="describe"></textarea>
+
+        </header>
+
+        <div class="panel-body">
+          <div [froalaEditor]="froalaOptions"  [(ngModel)]="neContent"></div>
+        </div>
+      </section>
+    </div>
+  </div>
+</section>

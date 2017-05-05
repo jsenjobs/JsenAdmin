@@ -1,0 +1,138 @@
+.fr-box.fr-basic.fr-top .fr-wrapper {
+  border-top: 0;
+  border-radius: 0 0 2px 2px;
+  -moz-border-radius: 0 0 2px 2px;
+  -webkit-border-radius: 0 0 2px 2px;
+  background-clip: padding-box;
+  box-shadow: 0 0 0 rgba(0,0,0,.12),0 0 0 0 rgba(0,0,0,.16);
+}
+.fr-modal .fr-modal-wrapper {
+  border-radius: 2px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  background-clip: padding-box;
+  margin: 20px auto;
+  display: inline-block;
+  background: #fff;
+  min-width: 300px;
+  box-shadow: none !important;
+  border: 0;
+  border-top: 5px solid #41dc28 !important;
+  overflow: hidden;
+  width: 90%;
+  padding-bottom: 10px;
+  position: relative;
+}
+.fr-separator.fr-hs {
+  /* clear: both; */
+  height: 0 !important;
+  width: calc(100% - (2 * 2px));
+  margin: 0 2px;
+}
+.fr-separator.fr-vs {
+  height: 34px;
+  width: 0 !important;
+  margin: 2px;
+}
+.fr-popup .fr-buttons {
+  box-shadow: none !important;
+   padding: 0 2px;
+   white-space: nowrap;
+   line-height: 0;
+   border-bottom: 0;
+ }
+.fr-popup {
+  position: absolute;
+  display: none;
+  color: #222;
+  background: #fff;
+  box-shadow: none !important;
+  border-radius: 2px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  background-clip: padding-box;
+  font-family: Arial,Helvetica,sans-serif;
+  box-sizing: border-box;
+  user-select: none;
+  -o-user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  margin-top: 10px;
+  z-index: 9995;
+  text-align: left;
+  border: 0;
+  border-top: 5px solid #41dc28 !important;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.fr-popup .fr-arrow {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid #41dc28 !important;
+  position: absolute;
+  top: -9px;
+  left: 50%;
+  margin-left: -5px;
+  display: inline-block;
+}
+.fr-modal .fr-modal-wrapper .fr-modal-head {
+  background: #fff;
+  box-shadow: none !important;
+  border-bottom: 0;
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+  min-height: 42px;
+  z-index: 3;
+  -webkit-transition: height .2s ease 0s;
+  -moz-transition: height .2s ease 0s;
+  -ms-transition: height .2s ease 0s;
+  -o-transition: height .2s ease 0s;
+}
+.fr-toolbar.fr-top {
+  top: 0;
+  border-radius: 2px 2px 0 0;
+  -moz-border-radius: 2px 2px 0 0;
+  -webkit-border-radius: 2px 2px 0 0;
+  background-clip: padding-box;
+  box-shadow: 0 0 0 rgba(0,0,0,.12),0 0 0 0 rgba(0,0,0,.16);
+}
+.fr-toolbar {
+  color: #222;
+  background: #fff;
+  position: relative;
+  z-index: 4;
+  font-family: Arial,Helvetica,sans-serif;
+  box-sizing: border-box;
+  user-select: none;
+  -o-user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  padding: 0 2px;
+  border-radius: 2px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  background-clip: padding-box;
+  box-shadow: none !important;
+  text-align: left;
+  border: 0;
+  border-top: 5px solid #41dc28;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+table {
+  background: #eeeeee;
+}
+td, th {
+  padding: 0;
+  border: 1px solid #67c3e5;
+}

@@ -1,0 +1,53 @@
+<div bsModal #createModal="bs-modal" class="modal modal-success fade" tabindex="-1" role="dialog" aria-labelledby="mml">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="OnCancel()">
+          <span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="mml">创建笔记</h4>
+      </div>
+      <div class="modal-body">
+        <div class="form-horizontal" style="padding-right: 12px;padding-left: 12px;">
+          <div class="form-group">
+            <div  class="col-lg-3 col-sm-3 control-label">笔记名字：</div>
+            <div class="col-lg-9">
+              <input type="text" class="form-control" [(ngModel)]="title">
+            </div>
+          </div>
+          <div class="form-group">
+            <div  class="col-lg-3 col-sm-3 control-label">作者：</div>
+            <div class="col-lg-9">
+              <input type="text" class="form-control" [(ngModel)]="author">
+            </div>
+          </div>
+          <div class="form-group">
+            <div  class="col-lg-3 col-sm-3 control-label">描述：</div>
+            <div class="col-lg-9">
+              <input type="text" class="form-control" id="exampleInputEmail1" [(ngModel)]="describe">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="btn-group col-sm-3 col-lg-3">
+              <button type="button" class="btn btn-success dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                选择笔记本 <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+                <li *ngFor="let book of notebookList" (click)="notebook = book"><a>{{book}}</a> </li>
+              </ul>
+            </div>
+            <div class="col-lg-9">
+              <input type="text" class="form-control col-lg-9" placeholder="笔记本" [(ngModel)]="notebook">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline pull-left" (click)="OnCancel()">取消</button>
+        <button type="button" class="btn btn-outline" (click)="OnSure()">确定</button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->

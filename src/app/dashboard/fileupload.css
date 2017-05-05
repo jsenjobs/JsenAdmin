@@ -1,0 +1,197 @@
+/*--------------------------
+        Media Gallery
+----------------------------*/
+
+
+.media-gal .item {
+  color: #7A7676;
+  border: solid 1px #f8f6f2;
+  display:none;
+  overflow:hidden;
+  margin: 2px;
+}
+
+
+/*  toggle  */
+
+.media-gal .item .toggle-edit {
+  border: none;
+  background-color: transparent;
+  color: #c7c7c7;
+}
+
+.media-gal .item .fa {
+  padding: 6px;
+}
+.media-gal .item .fa:hover {
+  color: #aeaeae;
+  background-color: #eaeaea;
+}
+
+
+/*
+ File upload
+*/
+
+.file {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+.file input {
+  position: absolute;
+  border: none;
+  font-size: 12px;
+  right: 0;
+  top: 0;
+  opacity: 0;
+}
+
+#filters {
+  margin:1%;
+  padding:0;
+  list-style:none;
+}
+
+#filters li {
+  float:left;
+}
+
+#filters li span {
+  display: block;
+  padding:5px 20px;
+  text-decoration:none;
+  color:#666;
+  cursor: pointer;
+}
+
+#filters li span.active {
+  background: #e95a44;
+  color:#fff;
+}
+
+
+
+#gallery .item {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  width: 160px;
+  display:none;
+  float:left;
+  overflow:hidden;
+}
+
+.portfolio-wrapper {
+  overflow:hidden;
+  position: relative !important;
+  cursor:pointer;
+}
+
+.item img {
+  max-width:100%;
+  position: relative;
+  padding: 20px;
+}
+
+.item .label {
+  position: absolute;
+  width: 100%;
+  height:40px;
+  bottom:-40px;
+}
+
+.item .label-bg {
+  background: #dcdcdc;
+  width: 100%;
+  height:100%;
+  position: absolute;
+  top:0;
+  left:0;
+}
+
+.item .label-text {
+  color:#fff;
+  position: relative;
+  z-index:500;
+  padding:5px 8px;
+}
+
+.item .text-category {
+  display:block;
+  font-size:9px;
+}
+
+
+
+
+
+
+/* #Tablet (Portrait) */
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+  .container {
+    width: 768px;
+  }
+}
+
+
+/*  #Mobile (Portrait) - Note: Design for a width of 320px */
+@media only screen and (max-width: 767px) {
+  .container {
+    width: 95%;
+  }
+
+  #gallery .item {
+    width:48%;
+    margin:1%;
+  }
+
+  #ads {
+    display:none;
+  }
+
+}
+
+
+/* #Mobile (Landscape) - Note: Design for a width of 480px */
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+  .container {
+    width: 70%;
+  }
+
+  #ads {
+    display:none;
+  }
+
+}
+
+/* #Clearing */
+
+/* Self Clearing Goodness */
+.container:after { content: "\0020"; display: block; height: 0; clear: both; visibility: hidden; }
+
+.clearfix:before,
+.clearfix:after,
+.row:before,
+.row:after {
+  content: '\0020';
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+  height: 0; }
+.row:after,
+.clearfix:after {
+  clear: both; }
+.row,
+.clearfix {
+  zoom: 1; }
+
+.clear {
+  clear: both;
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}

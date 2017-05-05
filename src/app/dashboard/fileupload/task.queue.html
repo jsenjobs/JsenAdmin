@@ -1,0 +1,68 @@
+<div class="row" *ngIf="uploader?.queue?.length > 0">
+  <div class="col-md-12">
+    <section class="panel">
+      <header class="panel-heading">
+        <div class="btn-group pull-right">
+          <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">操作 <i class="fa fa-angle-down"></i>
+          </button>
+          <ul class="dropdown-menu pull-right">
+            <li><a href="javascript:return void(0);" (click)="uploader.uploadAll()">
+              <i class="fa fa-folder-open"></i> 全部上传
+            </a></li>
+            <li><a href="javascript:return void(0);" (click)="uploader.cancelAll()">
+              <i class="fa fa-folder-open"></i> 全部取消
+            </a></li>
+            <li><a href="javascript:return void(0);" (click)="uploader.clearQueue()">
+              <i class="fa fa-folder-open"></i> 全部删除
+            </a></li>
+          </ul>
+        </div>
+        <p>上传队列：{{ uploader?.queue?.length }}</p>
+
+
+
+
+      </header>
+      <div class="panel-body">
+        <table class="table">
+          <thead>
+          <tr>
+            <th width="20%">文件名</th>
+            <th width="5%">大小</th>
+            <th width="30%">上传进度</th>
+            <th width="20%">上传结果</th>
+            <th width="25%">操作</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let item of uploader.queue">
+            <td><strong>{{ item?.file?.name }}</strong></td>
+            <td nowrap>{{ item?.file?.size/1024/1024 | number:'.2' }}  MB</td>
+            <td *ngIf="uploader.options.isHTML5">
+              <div class="progress progress-xs progress-striped active">
+                <div class="progress-bar progress-bar-success" [ngStyle]="{ 'width': item.progress + '%' }"></div>
+              </div>
+            </td>
+            <td>
+              <span *ngIf="item.isSuccess">上传成功</span>
+              <span *ngIf="item.isCancel">已取消</span>
+              <span *ngIf="item.isError">上传出错</span>
+            </td>
+            <td>
+              <button class="btn btn-sm btn-primary" type="button" (click)="item.upload()" *ngIf="!(item.isReady || item.isUploading || item.isSuccess)">
+                上传
+              </button>
+              <button class="btn btn-sm btn-warning" type="button" (click)="item.cancel()" *ngIf="item.isUploading">
+                取消
+              </button>
+              <button class="btn btn-sm btn-danger" type="button" (click)="item.remove()" *ngIf="!item.isUploading">
+                {{item.isSuccess?"完成":"移除"}}
+              </button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+</div>

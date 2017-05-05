@@ -1,0 +1,64 @@
+<!-- The time line -->
+<ul class="timeline">
+  <li class="time-label">
+    <code>{{notebook}}</code>
+  </li>
+  <!-- timeline time label -->
+  <li class="time-label">
+    <button class="btn btn-success btn-sm" (click)="OnCreateNode(notebook)">
+      <i class="fa fa-plus"></i>
+      新建笔记
+    </button>
+  </li>
+  <!-- /.timeline-label -->
+
+  <!-- timeline item -->
+  <li *ngFor="let note of FilterNotes()" [class.time-label]="!note.content">
+    <span [ngClass]="note.bg" *ngIf="!note.content" >
+      {{note.modifytime|date:'yyyy年MM月dd日'}}
+    </span>
+    <i class="fa fa fa-comments" [ngClass]="[note.bg]" *ngIf="note.content"></i>
+
+    <div *ngIf="note.content" class="timeline-item" (click)="OnItemClick(note)">
+      <span class="time"><i class="fa fa-clock-o"></i> {{note.modifytime|date:'yy-MM-dd'}}</span>
+
+      <h3 class="timeline-header"><a href="javascript:void(0);">{{note.author}}</a> {{note.title}}</h3>
+
+      <div class="timeline-body">
+        <!-- <img src="http://placehold.it/150x100" alt="..." class="margin"> -->
+        {{note.describe}}
+      </div>
+      <div class="timeline-footer">
+        <a [routerLink]="['/jsen/noteshowdetail',note]" class="btn btn-success btn-xs">详情</a>
+        <a [routerLink]="['/jsen/noteedite']" [queryParams]="note" class="btn btn-warning btn-xs">编辑</a>
+        <a class="btn btn-danger btn-xs" (click)="OnDelete(note.title, note.url)">删除</a>
+      </div>
+    </div>
+  </li>
+  <!-- END timeline item -->
+  <li>
+    <i class="fa fa-clock-o bg-gray"></i>
+  </li>
+</ul>
+
+
+
+
+<div bsModal #deleteModal="bs-modal" class="modal modal-danger fade" tabindex="-1" role="dialog" aria-labelledby="mdl">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="deleteModal.hide()">
+          <span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="mdl">确定要删除吗？</h4>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline pull-left" (click)="deleteModal.hide()">取消</button>
+        <button type="button" class="btn btn-outline" (click)="OnHandleDelete()">确定</button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->

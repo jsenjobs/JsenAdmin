@@ -1,0 +1,12 @@
+<section class="content-header">
+  <h1>
+    {{getIndicator().title}}
+    <small>{{getIndicator().subTitle}}</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li *ngFor="let path of getIndicator().paths;let f = first;let l = last;" [class.active]="l">
+      <a [routerLink]=[path.link] *ngIf="!l" (click)="OnItemClick(path.link)"><i class="fa fa-dashboard" *ngIf="f"></i> {{path.title}}</a>
+      <a href="javascript:void(0);" *ngIf="l"><i class="fa fa-dashboard" *ngIf="f"></i> {{path.title}}</a>
+    </li>
+  </ol>
+</section>

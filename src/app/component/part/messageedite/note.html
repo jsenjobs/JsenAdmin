@@ -1,0 +1,52 @@
+<section class="content">
+  <div class="row">
+    <div class="col-lg-6">
+      <section class="panel">
+        <div class="panel-body">
+          <form role="form">
+            <div class="form-group" style="margin-bottom: 0;">
+              <div class="iconic-input">
+                <input #box (keyup.enter)="SearchNotes(box.value)" type="text" class="form-control round-input" placeholder="查找笔记">
+              </div>
+            </div>
+          </form>
+        </div>
+      </section>
+    </div>
+    <div class="col-lg-6">
+      <section class="panel">
+
+        <div class="panel-body">
+          <span class="tools pull-right">
+            <div class="btn-group">
+              <button type="button" class="btn btn-success dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                选择  <code>{{selectedNotebook}}</code> <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+                <li *ngFor="let book of notebookList" (click)="notebook = book"><a (click)="ChangeNotebook(book)">{{book}}</a> </li>
+              </ul>
+            </div>
+            <button (click)="AllNotes()" class="btn btn-primary">所有笔记</button>
+            <button (click)="NewNote(mnc)" class="btn btn-success"><i class="fa fa-plus"></i>新建笔记</button>
+          </span>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- row -->
+  <div class="row">
+    <div class="col-md-4">
+      <note-timeline (itemClick)="noteItemClick($event)" [nodes]="noteList" [notebook]="selectedNotebook" (createNote)="NewNote2($event, mnc)" (deleteNote)="HandleDeleteNote($event)"></note-timeline>
+    </div>
+    <!-- /.col -->
+    <div class="col-md-8">
+      <note-notebook [content]="selectedNoteData" [title]="selectedNoteTitle"></note-notebook>
+    </div>
+  </div>
+
+
+  <!-- /.row -->
+</section>
+
+<modal-note-create (Sure)="HandleNewNote($event)" (Alert)="emitAlert($event)" [notebookList]="notebookList" #mnc></modal-note-create>

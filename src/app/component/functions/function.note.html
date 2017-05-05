@@ -1,0 +1,23 @@
+<section class="content">
+  <div class="row">
+    <div class="col-sm-12">
+      <section class="panel">
+
+        <header class="panel-heading">
+          <label>笔记：</label>
+        </header>
+
+        <div class="panel-body">
+
+        <quill-editor [(ngModel)]="editorContent"
+                      [options]="editorConfig"
+                      (blur)="onEditorBlured($event)"
+                      (focus)="onEditorFocused($event)"
+                      (ready)="onEditorCreated($event)"
+                      (change)="onContentChanged($event)">
+        </quill-editor>
+          </div>
+      </section>
+    </div>
+  </div>
+</section>

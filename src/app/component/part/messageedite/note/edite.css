@@ -1,0 +1,44 @@
+/*  input start  */
+.edit-box {
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  box-shadow: none;
+}
+.edit-box-fit {
+  float: right;
+  margin-left: 10px;
+  display: inline-block;
+  width: auto;
+  vertical-align: middle;
+}
+.form-control::-moz-placeholder {
+  color: #999;
+  opacity: 1;
+}
+*::before, *::after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+input {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+label {
+  line-height: 33px;
+  width: 100%;
+  float: right;
+  font-weight: 300;
+  display: inline-block;
+  margin-bottom: 5px;
+}
+
+.btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open .dropdown-toggle.btn-default {
+  box-shadow:none;
+  color: #333;
+  background-color: #ebebeb;
+  border-color: #adadad;
+}
+
+/*  input end  */

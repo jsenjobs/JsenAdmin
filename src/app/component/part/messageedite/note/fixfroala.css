@@ -1,0 +1,23 @@
+/*  emoji  */
+
+.fr-view span.fr-emoticon.fr-emoticon-img {
+  background-repeat:no-repeat !important;
+  font-size:inherit;
+  height:1em;
+  width:1em;
+  min-height:20px;
+  min-width:20px;
+  display:inline-block;
+  margin:-0.1em 0.1em 0.1em;
+  line-height:1;
+  vertical-align:middle
+}
+.fr-view span.fr-emoticon {
+  font-weight:normal;
+  font-family:"Apple Color Emoji", "Segoe UI Emoji", "NotoColorEmoji", "Segoe UI Symbol", "Android Emoji", "EmojiSymbols";
+  display:inline;
+  line-height:0
+}
+.fr-view span.fr-emoticon .fr-view .fr-text-gray {
+  color:#AAA !important
+}

@@ -1,0 +1,89 @@
+<aside class="main-sidebar">
+  <!-- sidebar: style can be found in sidebar.less -->
+  <section class="sidebar">
+    <!-- Sidebar user panel -->
+    <div class="user-panel">
+      <div class="pull-left image">
+        <img src="https://github.com/jsenjobs/Res/blob/master/jsenadmin/logo.jpg?raw=true" class="img-circle" alt="我的头像">
+      </div>
+      <div class="pull-left info">
+        <p>Jsen</p>
+        <a href="#"><i class="fa fa-circle text-success"></i> 在线</a>
+      </div>
+    </div>
+    <!-- search form -->
+    <form action="#" method="get" class="sidebar-form">
+      <div class="input-group">
+        <input type="text" name="q" class="form-control" placeholder="查找">
+        <span class="input-group-btn">
+                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                </button>
+              </span>
+      </div>
+    </form>
+    <!-- /.search form -->
+    <!-- sidebar menu: : style can be found in sidebar.less -->
+
+
+    <ul class="sidebar-menu" style="z-index:10000;">
+      <li class="header">导航</li>
+      
+      <li *ngFor="let menu of menuList" [class.treeview]="menu.type === 'container'" [class.active]="menu.expand || menu.hover"  (mouseenter)="OnLeftHover(menu)" >
+        <a (click)="OnContainerClick(menu, false, false)" *ngIf="menu.type === 'container'">
+          <i class="fa {{menu.icon}}"></i> <span>{{menu.title}}</span>
+          <span class="pull-right-container">
+            <small *ngFor="let tip of menu.tips" class="label pull-right" [ngClass]="tip.style">{{tip.title}}</small>
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul *ngIf="menu.type === 'container'" class="treeview-menu" [@heroState]="menu.expand?'active':'inactive'">
+          <li *ngFor="let item of menu.child" [class.active]="item.expand">
+            <a routerLink="{{urlBase + item.link}}" routerLinkActive="active" *ngIf="item.type === 'content'"><i class="fa {{item.icon}}"></i> {{item.title}}
+            </a>
+
+            <a (click)="OnContainerClick(menu,item, false)" routerLinkActive="active" *ngIf="item.type === 'container'"><i class="fa {{item.icon}}"></i> {{item.title}}
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+            </a>
+
+            <ul class="treeview-menu" *ngIf="item.type === 'container'" [@heroState]="item.expand?'active':'inactive'">
+              <li *ngFor="let item0 of item.child" [class.active]="item0.expand">
+                <a href="#" routerLink="{{urlBase + item.link}}" *ngIf="item0.type === 'content'"><i class="fa {{item0.icon}}"></i>{{item0.title}}
+                </a>
+
+
+                <a *ngIf="item0.type === 'container'" (click)="OnContainerClick(menu,item,item0)" ><i class="fa {{item0.icon}}"></i>{{item0.title}}
+                  <span class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu" *ngIf="item0.type === 'container'" [@heroState]="item0.expand?'active':'inactive'">
+                  <li *ngFor="let item1 of item0.child"><a href="#"><i class="fa {{item1.icon}}"></i>{{item1.title}}</a></li>
+                </ul>
+              </li>
+            </ul>
+
+          </li>
+        </ul>
+
+        <a *ngIf="menu.type === 'content'" routerLink="{{urlBase + menu.link}}">
+          <i class="fa {{menu.icon}}"></i> <span>{{menu.title}}</span>
+          <span class="pull-right-container" *ngIf="menu.tips">
+            <small *ngFor="let tip of menu.tips" class="label pull-right" [ngClass]="tip.style">{{tip.title}}</small>
+          </span>
+        </a>
+      </li>
+
+
+      <li class="header">LABELS</li>
+      <li *ngFor="let label of labelList">
+        <a routerLink="{{urlBase + label.link}}">
+          <i class="fa fa-circle-o {{label.color}}"></i> 
+          <span>{{label.title}}</span>
+        </a>
+      </li>
+    </ul>
+  </section>
+  <!-- /.sidebar -->
+</aside>
