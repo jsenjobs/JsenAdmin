@@ -1,0 +1,19 @@
+#!/bin/bash
+#自动部署脚本
+#travis ci 自动部署
+
+msg='deploy'
+if [ "--m"x == "$1"x -o  "-m"x == "$1"x  -o  "\"--m\""x == "$1"x  -o  "\"-m\""x == "$1"x ] && [ $# -ge 2 ];
+then  
+    msg=${@:2}
+fi  
+
+echo 'git add start'
+
+msg='deploy'
+git add *
+git add -A
+
+git commit -m $msg
+
+git push -u origin master
