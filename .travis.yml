@@ -12,4 +12,12 @@ before_install:
 - chmod 600 ~/.ssh/id_rsa
 - echo -e "Host 120.25.217.56\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 after_success:
+- rm -rf jsenadmin.tar.bz2
+- npm prune --production
+- mv ./dist ~/ && rm -rf * && mv ~/dist ./ && tar -jcf jsenadmin.tar.bz2 *
+- scp jsenadmin.tar.bz2 root@120.25.217.56:~/
+- ssh root@120.25.217.56 'rm -rf /var/www/webapppp/public/*'
+- ssh root@120.25.217.56 'mkdir -p jsenadmin && tar -jxf jsenadmin.tar.bz2 -C jsenadmin'
+- ssh root@120.25.217.56 'mv ~/jsenadmin/dist/* /var/www/webapppp/public && rm -rf jsenadmin && rm -rf jsenadmin.tar.bz2'
+- ssh root@120.25.217.56 '/usr/local/nginx/sbin/nginx -s reload'
 - rm -rf ~/.ssh
