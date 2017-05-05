@@ -10,7 +10,6 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "run": "ng serve --port 3001 --host 127.0.0.1 -ec",
-    "install":"NODE_ENV=development && npm install",
     "push":"./deploy --m "
   },
   "private": true,
